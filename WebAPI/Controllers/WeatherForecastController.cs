@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 namespace WebAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
-    {
+        {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     };
 
@@ -32,7 +32,10 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        [Route("Get/weatherforecast")]
+        [Route("Get/weatherforecast2")]
+        [Route("[action]")]
+        public IEnumerable<WeatherForecast> GetW()
         {
             return ListWeatherForecast;
         }

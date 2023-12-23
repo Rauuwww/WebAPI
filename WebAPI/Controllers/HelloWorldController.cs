@@ -7,15 +7,20 @@ namespace WebAPI.Controllers
     [Route("api/[controller]")]
     public class HelloWorldController : ControllerBase
     {
-        IHelloWorldService helloWorldService;
+        private readonly IHelloWorldService helloWorldService;
+        private readonly ILogger<HelloWorldController> logger; // Agrega el logger
 
-        public HelloWorldController(IHelloWorldService helloWorld)
+        public HelloWorldController(IHelloWorldService helloWorld, ILogger<HelloWorldController> logger)
         {
-            helloWorldService = helloWorld;
+            this.helloWorldService = helloWorld;
+            this.logger = logger;
         }
 
         public IActionResult Get()
         {
+            // Implementa el logdebug
+            logger.LogDebug("Obteniendo el texto");
+
             return Ok(helloWorldService.GetHelloWorld());
         }
     }

@@ -32,9 +32,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
-        [Route("Get/weatherforecast")]
-        [Route("Get/weatherforecast2")]
-        [Route("[action]")]
+        //[Route("Get/weatherforecast")]
+        //[Route("Get/weatherforecast2")]
+        //[Route("[action]")]
         public IEnumerable<WeatherForecast> GetW()
         {
             _logger.LogDebug("Retornando la lista de weatherforecast");
@@ -52,26 +52,7 @@ namespace WebAPI.Controllers
         [HttpDelete("{index}")]
         public IActionResult Delete(int index)
         {
-            if (index < 0 || index >= ListWeatherForecast.Count)
-            {
-                return NotFound(); // Devolver 404 si el índice está fuera de rango
-            }
-
             ListWeatherForecast.RemoveAt(index);
-
-            return Ok();
-        }
-
-        [HttpPut("{index}")]
-        public IActionResult Put(int index, WeatherForecast updatedForecast)
-        {
-            if (index < 0 || index >= ListWeatherForecast.Count)
-            {
-                return NotFound(); // Devolver 404 si el índice está fuera de rango
-            }
-
-            // Actualizar el elemento en la posición especificada
-            ListWeatherForecast[index] = updatedForecast;
 
             return Ok();
         }

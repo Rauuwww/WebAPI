@@ -2,11 +2,11 @@
 
 namespace WebAPI.Services
 {
-    public class CategotiaService : ICategoriaService
+    public class CategoriaService : ICategoriaService
     {
         TareasContext context;
 
-        public CategotiaService(TareasContext dbcontext)
+        public CategoriaService(TareasContext dbcontext)
         {
             context = dbcontext;
         }

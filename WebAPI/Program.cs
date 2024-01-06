@@ -1,3 +1,5 @@
+using Microsoft.Extensions.Configuration;
+using WebAPI;
 using WebAPI.Middlewares;
 using WebAPI.Services;
 
@@ -9,6 +11,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSqlServer<TareasContext> (builder.Configuration.GetConnectionString("cnTareas"));
 builder.Services.AddScoped<IHelloWorldService, HelloWorldServices>();
 builder.Services.AddScoped<ICategoriaService, CategoriaService>();
 builder.Services.AddScoped<ITareasService, TareasService>();
